@@ -1,11 +1,18 @@
 const express = require ("express");
 const User = require ("../models/User")
-// encrpt data export **** 
 const bcrypt = require ("bcryptjs");
 const jwt = require("jsonwebtoken");
+const { loginUser, createAdminUser } = require("../controllers/UserController");
 
 
 const router = express.Router();
+
+
+// Login Route
+router.post("/login", loginUser);
+
+// Create Admin Route
+router.post("/create-admin", createAdminUser);
 
 // Register
 router.post("/register", async (req, res) => {
@@ -31,6 +38,8 @@ router.post("/register", async (req, res) => {
   }
 });
 
+
+//login
 router.post("/login", async (req, res) => {
   try {
     const { email, password } = req.body;
