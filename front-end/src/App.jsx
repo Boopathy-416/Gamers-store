@@ -3,10 +3,8 @@ import React from "react";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import Layout from "./components/layout/Layout";
-import AuthPage from "./main/hero-section/pages/AuthPage"
-
-import toast, { Toaster } from "react-hot-toast";
-import { Home } from "lucide-react";
+import ToastHandler from "./main/gateway/components/ToastHandler";
+import Secure from "./main/gateway/pages/secure";
 
 const queryClient = new QueryClient();
 
@@ -16,12 +14,13 @@ function App() {
       <Router>
         <Layout>
           <Routes>
-            <Route path="/" element={<Home />} />
-            <Route path="/auth" element={<AuthPage />} />
+            <Route path="/" element={<Secure />} />
+           
           </Routes>
+          <ToastHandler />
         </Layout>
       </Router>
-      <Toaster position="top-right" reverseOrder={false} />
+      
     </QueryClientProvider>
   );
 }
