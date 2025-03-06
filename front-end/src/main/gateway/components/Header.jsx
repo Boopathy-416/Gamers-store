@@ -7,9 +7,8 @@ const Header = () => {
   const [modal, setModal] = useState(null);
 
   return (
-    <header className="p-4 flex justify-between items-center bg-gray-900 text-white">
-      <h1 className="text-2xl font-bold">Gamer's Store</h1>
-      <div className="flex gap-4">
+    <header className=" flex justify-between items-center text-white">
+      <div className="flex gap-10">
         <button onClick={() => setModal("login")}>
           <LogIn size={24} />
         </button>

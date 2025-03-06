@@ -2,6 +2,7 @@
 import React from "react";
 import { Search, Menu } from "lucide-react";
 import { Avatar, Input, Button } from './ui';
+import Header from "../../main/gateway/components/Header"
 
 const Navbar = ({ toggleMenu, isMobile }) => {
   return (
@@ -24,7 +25,7 @@ const Navbar = ({ toggleMenu, isMobile }) => {
           <Search className="absolute right-3 top-1/2 transform -translate-y-1/2 h-5 w-5 text-gray-400" />
         </div>
       </div>
-
+      <Header />
       <Avatar src="/placeholder.svg?height=32&width=32" alt="User Avatar" fallback="MS" />
     </header>
   );
