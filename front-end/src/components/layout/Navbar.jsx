@@ -1,32 +1,60 @@
+import React, { useState } from "react";
+import { Search, Menu, UserCheck2Icon } from "lucide-react";
+import { Avatar, Input, Button } from "./ui";
 
-import React from "react";
-import { Search, Menu } from "lucide-react";
-import { Avatar, Input, Button } from './ui';
-import Header from "../../main/gateway/components/Header"
+const Navbar = ({ toggleMenu, isMobile, user }) => {
+  const [isSearchActive, setIsSearchActive] = useState(false);
 
-const Navbar = ({ toggleMenu, isMobile }) => {
   return (
-    <header className="h-14 bg-[#2d2d2d] text-white flex items-center justify-around px-4 fixed top-0 left-0 right-0 z-30 w-full">
+    <header className="h-16 bg-black opacity-90 text-white flex items-center justify-between px-4 fixed top-0 left-0 right-0 z-30 w-full">
+      {/* Left - Logo & Store Name */}
       <div className="flex items-center gap-2">
         {isMobile && (
-          <Button onClick={toggleMenu}>
+          <Button onClick={toggleMenu} className="md:hidden">
             <Menu size={24} />
           </Button>
         )}
         <div className="flex items-center gap-2">
-          <img src="https://media.giphy.com/media/TTTOZ3zTEB23atB39U/giphy.gif?cid=ecf05e47yfbg9o40i5t5j76bb9nb89gxs7hrju6n502zbdey&ep=v1_gifs_search&rid=giphy.gif&ct=g"  alt="Bpy's Store" className="h-8 w-8 overflow-hidden border-2 border-amber-100 rounded-full" />
-          <span className="font-thin uppercase backdrop-saturate-200 ">Gamer's Store</span>
+          <img
+            src="https://media.giphy.com/media/TTTOZ3zTEB23atB39U/giphy.gif"
+            alt="Gamer's Store"
+            className="h-8 w-8 overflow-hidden border-2 border-amber-100 rounded-full"
+          />
+          <span className="font-thin uppercase hidden sm:block">
+            Gamer's Store
+          </span>
         </div>
       </div>
 
-      <div className="relative mx-4 flex-1 max-w-2xl">
+      {/* Center - Search Bar */}
+      <div
+        className={`relative mx-4 flex-1 max-w-2xl transition-all duration-300 ${
+          isSearchActive ? "w-full max-w-[60%]" : "w-72 md:w-96"
+        }`}
+      >
         <div className="relative flex items-center">
-          <Input type="text" placeholder="Search apps, games, movies, and more" />
+          <Input
+            type="text"
+            placeholder="Search apps, games, movies, and more"
+            className={`transition-all duration-300 w-full ${
+              isSearchActive ? "w-full px-4 py-2" : "md:w-full"
+            }`}
+            onFocus={() => setIsSearchActive(true)}
+            onBlur={() => setIsSearchActive(false)}
+          />
           <Search className="absolute right-3 top-1/2 transform -translate-y-1/2 h-5 w-5 text-gray-400" />
         </div>
       </div>
-      <Header />
-      <Avatar src="/placeholder.svg?height=32&width=32" alt="User Avatar" fallback="MS" />
+
+      {/* Right - User Avatar & Username */}
+      <div className="flex items-center gap-2">
+        <UserCheck2Icon />
+        {user ? (
+          <span className="hidden sm:block">{user.name}</span> // ✅ Show username if logged in
+        ) : (
+          <span className="hidden sm:block">Guest</span>
+        )}
+      </div>
     </header>
   );
 };

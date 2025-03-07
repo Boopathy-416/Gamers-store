@@ -3,7 +3,7 @@ import { useForm } from "react-hook-form";
 import { toast } from "react-hot-toast";
 import { login, adminLogin, signup } from "../api/auth";
 
-const AuthForm = ({ type, onSuccess }) => {
+const AuthForm = ({ type, onSuccess, setUser }) => {
   const { register, handleSubmit, reset } = useForm();
 
   const mutation = useMutation({
@@ -15,26 +15,34 @@ const AuthForm = ({ type, onSuccess }) => {
     onSuccess: (data) => {
       toast.success(`${type} successful`);
       reset();
+
+      // ✅ Ensure user is correctly stored in localStorage
+      localStorage.setItem("user", JSON.stringify(data.user));
+
+      // ✅ Immediately update state so Navbar updates
+      setUser(data.user);
+
       onSuccess(data);
     },
+
     onError: (error) => {
+      // console.error("Auth Error:", error);
       toast.error(error.response?.data?.message || "Authentication failed");
-      console.log()
     },
   });
 
   return (
     <form
       onSubmit={handleSubmit((data) => mutation.mutate(data))}
-      className="flex flex-col p-4 bg-gray-800 text-white rounded-lg shadow-lg max-w-sm mx-auto"
+      className="flex flex-col py-4 px-8  text-white  max-w-sm mx-auto"
     >
-      <h2 className="text-xl font-bold mb-4 capitalize">{type}</h2>
+      <h2 className="text-xl font-bold mb-6 capitalize">{type}</h2>
 
       {type === "signup" && (
         <input
           {...register("name")}
           placeholder="Full Name"
-          className="p-2 mb-2 bg-gray-700 rounded"
+          className="p-2 mb-2 backdrop-blur-2xl border-amber-50 border rounded"
           required
         />
       )}
@@ -42,20 +50,20 @@ const AuthForm = ({ type, onSuccess }) => {
       <input
         {...register("email")}
         placeholder="Email"
-        className="p-2 mb-2 bg-gray-700 rounded"
+        className="p-2 mb-2 backdrop-blur-2xl border-amber-50 border rounded"
         required
       />
       <input
         {...register("password")}
         type="password"
         placeholder="Password"
-        className="p-2 mb-2 bg-gray-700 rounded"
+        className="p-2 mb-2 backdrop-blur-2xl border-amber-50 border rounded"
         required
       />
       <button
         type="submit"
         disabled={mutation.isPending}
-        className="bg-blue-500 hover:bg-blue-600 p-2 rounded disabled:bg-gray-500"
+        className="border hover:bg-yellow-600 p-2 rounded disabled:bg-gray-500"
       >
         {mutation.isPending ? "Processing..." : type}
       </button>
