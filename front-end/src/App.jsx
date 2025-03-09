@@ -4,7 +4,7 @@ import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import Layout from "./components/layout/Layout";
 import ToastHandler from "./main/gateway/components/ToastHandler";
-import Secure from "./main/gateway/pages/secure";
+
 
 const queryClient = new QueryClient();
 
@@ -14,7 +14,7 @@ function App() {
       <Router>
         <Layout>
           <Routes>
-            <Route path="/" element={<Secure />} />
+            {/* <Route path="/" element={<Secure />} /> */}
            
           </Routes>
           <ToastHandler />
