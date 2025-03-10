@@ -93,7 +93,7 @@ const Homeslider = () => {
               
               <h2 className="text-4xl font-bold py-2 px-4">{slide.name}</h2>
               <p className="text-sm text-gray-500 ">₹<del>{slide.price}</del> <b className="text-red-400">₹999</b></p>
-              <p className="text-md px-40">{slide.content}</p>
+              <p className="text-md px-4 md:py-7 md:px-6">{slide.content}</p>
               <div className="mt-6 flex space-x-4">
                 <button className="px-8 py-2 text-base bg-blue-600 text-white rounded-xs shadow-xl hover:bg-blue-700">
                  <ArrowDownCircle   />

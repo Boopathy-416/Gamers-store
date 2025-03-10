@@ -2,6 +2,7 @@ import { useMutation } from "@tanstack/react-query";
 import { useForm } from "react-hook-form";
 import { toast } from "react-hot-toast";
 import { login, adminLogin, signup } from "../api/auth";
+import React from "react";
 
 const AuthForm = ({ type, onSuccess, setUser }) => {
   const { register, handleSubmit, reset } = useForm();

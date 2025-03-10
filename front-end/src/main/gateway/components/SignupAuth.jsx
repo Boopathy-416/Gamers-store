@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { UserCircleIcon } from "lucide-react";
 import AuthForm from "./AuthForm";
+import React from "react";
 import { Dialog } from "@headlessui/react";
 
 const SignupAuth = () => {
