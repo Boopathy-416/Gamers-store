@@ -2,6 +2,9 @@ import { LogIn } from "lucide-react";
 import React, { useState } from "react";
 import AuthForm from "./AuthForm";
 import { Dialog } from "@headlessui/react";
+import adminIcon from "/public/Assets/icons/Admin icon.gif";
+import { DoorClosed } from "lucide-react";
+import { Tooltip } from "react-tooltip";
 
 const LoginAuth = ({ setUser }) => {
   const [modal, setModal] = useState(false);
@@ -18,7 +21,13 @@ const LoginAuth = ({ setUser }) => {
           onClose={() => setModal(false)}
           className="fixed inset-0 flex items-center justify-center bg-black bg-opacity-50"
         >
-          <div className="border-1 border-white backdrop-blur-sm px-12 py-15 rounded-lg">
+          <div className=" backdrop-blur-sm px-12 py-15 rounded-lg">
+            <img
+              src={adminIcon}
+              alt="Welcome Admin"
+              width="400px"
+              height="auto"
+            />
             <AuthForm
               type="login"
               onSuccess={(user) => {
@@ -26,12 +35,20 @@ const LoginAuth = ({ setUser }) => {
                 setModal(false);
               }}
             />
+
+            {/* Close Button with Tooltip */}
             <button
               onClick={() => setModal(false)}
-              className="mt-2 text-red-400"
+              data-tooltip-id="close-tooltip"
+              className="mt-2 flex items-center gap-2 text-red-500 hover:text-red-700 transition"
             >
-              Close
+              <DoorClosed size={24} /> Close
             </button>
+
+            {/* Tooltip (Hover Effect) */}
+            <Tooltip id="close-tooltip" place="top" effect="solid">
+            Close and reload the page
+            </Tooltip>
           </div>
         </Dialog>
       )}

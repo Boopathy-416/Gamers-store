@@ -27,23 +27,23 @@ const AuthForm = ({ type, onSuccess, setUser }) => {
     },
 
     onError: (error) => {
-      // console.error("Auth Error:", error);
-      toast.error(error.response?.data?.message || "Authentication failed");
-    },
+      toast.error(error.response?.data?.message || "If successful ✅, please reload this page 🔄️.");
+    }
+
   });
 
   return (
     <form
       onSubmit={handleSubmit((data) => mutation.mutate(data))}
-      className="flex flex-col py-4 px-8  text-white  max-w-sm mx-auto"
+      className="flex flex-col py-4 px-8  text-white text-center  max-w-sm mx-auto"
     >
-      <h2 className="text-xl font-bold mb-6 capitalize">{type}</h2>
+      <h2 className="text-xs font-bold mb-6 capitalize">Hi there! {type} in to access your account.  </h2>
 
       {type === "signup" && (
         <input
           {...register("name")}
           placeholder="Full Name"
-          className="p-2 mb-2 backdrop-blur-2xl border-amber-50 border rounded"
+          className="p-2 mb-2   bg-gray-500 text-black border rounded"
           required
         />
       )}
@@ -51,22 +51,22 @@ const AuthForm = ({ type, onSuccess, setUser }) => {
       <input
         {...register("email")}
         placeholder="Email"
-        className="p-2 mb-2 backdrop-blur-2xl border-amber-50 border rounded"
+        className="p-2 mb-2  bg-gray-500 text-black border rounded"
         required
       />
       <input
         {...register("password")}
         type="password"
         placeholder="Password"
-        className="p-2 mb-2 backdrop-blur-2xl border-amber-50 border rounded"
+        className="p-2 mb-2  bg-gray-500 text-black border rounded"
         required
       />
       <button
         type="submit"
         disabled={mutation.isPending}
-        className="border hover:bg-yellow-600 p-2 rounded disabled:bg-gray-500"
+        className="border hover:bg-yellow-600 uppercase cursor-pointer p-2 rounded disabled:bg-gray-500"
       >
-        {mutation.isPending ? "Processing..." : type}
+        {mutation.isPending ? "Just a moment..." : type}
       </button>
     </form>
   );

@@ -69,7 +69,7 @@ const Homeslider = () => {
   };
 
   return (
-    <main className="relative bg-black rounded-2xl w-full overflow-hidden sm:block hidden">
+    <main className="relative bg-black border-2  border-b-8 border-red-500 rounded-4xl w-full overflow-hidden sm:block hidden">
       {/* Slider Container */}
       <h1 className="text-xs px-10 py-2  text-amber-100 uppercase  text-end">Top-Rated Trending Games – Featured Paid Promotions</h1>
       <div className="relative w-full h-full px-5 py-4 overflow-hidden">
@@ -113,7 +113,7 @@ const Homeslider = () => {
           <div
             key={i}
             className={`w-3 h-3 rounded-full transition-all duration-300 ${
-              i === index ? "bg-yellow-500 scale-125 border-white border" : "bg-red-800 border-2 border-white"
+              i === index ? "bg-gray-500 scale-125 border-white border" : "bg-red-500 border-2 border-white"
             }`}
           ></div>
         ))}

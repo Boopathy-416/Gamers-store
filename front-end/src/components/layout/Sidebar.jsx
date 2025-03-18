@@ -3,9 +3,7 @@ import {
   Home,
   Layers,
   Gamepad2,
-  Sparkles,
   Download,
-  Library,
 } from "lucide-react";
 import AdminAuth from "../../main/gateway/components/AdminAuth";
 import LoginAuth from "../../main/gateway/components/LoginAuth";
@@ -34,7 +32,7 @@ const NavItem = ({ icon, label, active }) => {
     <div className="w-full flex flex-col items-center justify-center py-3 px-1 cursor-pointer">
       <div
         className={`p-2 rounded-md ${
-          active ? "bg-[#0078d7] text-white" : "text-gray-300 hover:bg-gray-700"
+          active  ? "border-[#0078d7] border-1 border-r-4   text-red-400" : "text-yellow-200 hover:border-gray-700 hover:border-2 hover:text-red-400 border-black border-2 "
         }`}
       >
         {icon}

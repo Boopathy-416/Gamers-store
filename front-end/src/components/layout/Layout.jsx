@@ -1,18 +1,23 @@
 import React, { useState, useEffect } from "react";
 import { Sidebar, Navbar } from "./index";
-import Homeslider from "../../main/gateway/pages/IntroSlider";
-import IntroApp from "../../main/gateway/pages/IntroApp";
+import logout from "../../../public/Assets/icons/loGout.gif";
+import Hero from "./Hero"; // ✅ Import Hero
 
-const Layout = ({ children }) => {
+function Layout() {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [isMobile, setIsMobile] = useState(false);
   const [user, setUser] = useState(null); // Store logged-in user
 
   useEffect(() => {
-    // Load user from localStorage on page load
-    const storedUser = localStorage.getItem("user");
-    if (storedUser) {
-      setUser(JSON.parse(storedUser));
+    try {
+      // ✅ Safely get user from localStorage
+      const storedUser = localStorage.getItem("user");
+      if (storedUser) {
+        setUser(JSON.parse(storedUser)); // ✅ Parse only if data exists
+      }
+    } catch (error) {
+      console.error("Error parsing user data:", error);
+      localStorage.removeItem("user"); // Remove corrupted data
     }
   }, []);
 
@@ -34,32 +39,42 @@ const Layout = ({ children }) => {
 
   const toggleMobileMenu = () => setIsMobileMenuOpen(!isMobileMenuOpen);
 
-  // bg-[url(/Assets/background/earth.webp)]
+  const handleLogout = () => {
+    localStorage.removeItem("user");
+    setUser(null);
+    window.location.reload(); // Refresh the page after logout
+  };
+
   return (
-    <div className="min-h-screen flex flex-col bg-gray-400 bg-fixed bg-center bg-no-repeat  ">
+    <div className="min-h-screen flex flex-col bg-[#C4C1C6] bg-fixed bg-center bg-no-repeat">
       <Navbar toggleMenu={toggleMobileMenu} isMobile={isMobile} user={user} />
       <Sidebar isMobile={isMobile} isMobileMenuOpen={isMobileMenuOpen} />
-      <main
-        className={`flex-1 pt-14 overflow-auto ${!isMobile ? "pl-16" : ""}`}
-      >
-        <div className="container  mx-auto px-4 py-6">
-       <Homeslider />
-       
-          {children}
+
+      {/* Logout Button (Top Right) */}
+      {user && (
+        <div className="fixed bottom-4 right-4 z-50 p-1 rounded-full shadow-md transition">
+          <img
+            src={logout}
+            className="cursor-pointer hover:scale-125"
+            onClick={handleLogout}
+            alt="Logout"
+            width="80px"
+            height="70px"
+          />
         </div>
-        <div className="container  mx-auto px-4 py-10">
-       <IntroApp />
-        </div>
-      </main>
+      )}
+
+      {/* ✅ Use Hero component */}
+      <Hero />
 
       {isMobile && isMobileMenuOpen && (
         <div
-          className="fixed inset-0  bg-opacity-50 z-10"
+          className="fixed inset-0 bg-opacity-50 z-10"
           onClick={() => setIsMobileMenuOpen(false)}
         />
       )}
     </div>
   );
-};
+}
 
 export default Layout;
