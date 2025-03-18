@@ -27,7 +27,7 @@ const AuthForm = ({ type, onSuccess, setUser }) => {
     },
 
     onError: (error) => {
-      toast.error(error.response?.data?.message || "If successful ✅, please reload this page 🔄️.");
+      toast.info(error.response?.data?.message || "If successful ✅, please reload this page.");
     }
 
   });

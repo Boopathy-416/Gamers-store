@@ -69,9 +69,9 @@ const Homeslider = () => {
   };
 
   return (
-    <main className="relative bg-black border-2  border-b-8 border-red-500 rounded-4xl w-full overflow-hidden sm:block hidden">
+    <main className="relative bg-black border-8 mb-20   shadow-outer p-8 border-shadow-[0px_0px_20px_rgba(255,255,255,0.2)] rounded-md shadow-[0px_0px_20px_rgba(255,255,255,0.2)] w-full overflow-hidden sm:block hidden">
       {/* Slider Container */}
-      <h1 className="text-xs px-10 py-2  text-amber-100 uppercase  text-end">Top-Rated Trending Games – Featured Paid Promotions</h1>
+      <h1 className="text-xs px-10 py-2  text-amber-100 uppercase   shadow-inner  text-end">Top-Rated Trending Games – Featured Paid Promotions</h1>
       <div className="relative w-full h-full px-5 py-4 overflow-hidden">
         <div
           ref={slidesRef}

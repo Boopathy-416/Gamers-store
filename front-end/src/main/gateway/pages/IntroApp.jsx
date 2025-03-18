@@ -69,9 +69,9 @@ export default function IntroApp() {
   }, []);
 
   return (
-    <div className="flex flex-col items-center justify-center h-screen   bg-black border-2  border-b-10 border-gray-500 rounded-4xl  text-white">
-        <h1 className="text-lg  pb-10  text-amber-800 uppercase   text-center ">Best Selling Trending Apps Featured Paid Promotions</h1>
-      <div className="relative flex overflow-hidden w-4/5 h-[50vh]  rounded-4xl  bg-gray-600  border-gray-600 border-12 ">
+    <div className="flex flex-col mb-20  items-center justify-center h-screen p-8    bg-black  rounded-md  text-white">
+        <h1 className="text-sm  pb-10  text-amber-800 uppercase   text-center ">Best Selling Trending Apps Featured Paid Promotions</h1>
+      <div className="relative flex overflow-hidden w-4/5 h-[50vh]  rounded-md bg-gray-600  border-gray-600 border-12 ">
         {softwareList.map((software) => (
           <div
             key={software.id}

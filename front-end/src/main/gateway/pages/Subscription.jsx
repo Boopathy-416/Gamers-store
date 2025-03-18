@@ -38,7 +38,7 @@ const Subscription = () => {
 
   if (isSmallScreen) {
     return (
-      <div className="fixed inset-0 flex items-center justify-center bg-black text-white text-center p-6">
+      <div className="fixed inset-0   flex items-center justify-center bg-black text-white text-center p-6">
         <div>
           <h2 className="text-lg font-bold mb-4">
           This website is optimized for larger screens.
@@ -50,14 +50,14 @@ const Subscription = () => {
   }
 
   return (
-    <section className="relative w-full bg-black border-green-500 border-2 rounded-4xl border-b-8 text-white py-16 px-8">
+    <section className="relative mb-20 w-full bg-black   rounded-md  text-white py-16 px-8">
       {/* Title */}
-      <h2 className="text-lg font-semibold uppercase text-center pb-6 px-1">
+      <h2 className="text-lg font-semibold uppercase text-end pb-6 px-1">
         Latest & Upcoming Apps <Bell className="inline-block text-amber-300 ml-2" />
       </h2>
 
       {/* Dual Containers */}
-      <div className="flex flex-col lg:flex-row border-amber-500 rounded-full overflow-hidden px-2 py-4 border-2 border-b-6 bg-black justify-center gap-6">
+      <div className="flex flex-col lg:flex-row border-amber-400 shadow-amber-700 shadow-inner  rounded-full overflow-hidden px-2 py-4 border-2  justify-center gap-6">
         {/* Left Container - Upcoming Apps */}
         <div className="relative w-full lg:w-2/4 px-0 py-4 rounded-full overflow-hidden">
           <div className="flex gap-4" ref={leftRef}>
@@ -78,13 +78,13 @@ const Subscription = () => {
       </div>
 
       {/* Subscription Box */}
-      <div id="subscription-section" className="py-10 text-center">
+      <div id="subscription-section" className="py-10 text-end">
         <h3 className="text-sm font-medium py-4">Get Notified for Latest Updates</h3>
-        <div className="relative max-w-lg mx-auto">
+        <div className="relative  max-w-lg mx-auto">
           <input
             type="email"
             placeholder="Enter your email..."
-            className="w-full p-3 border-gray-600 rounded-sm border-b-3 border-1 text-green-400 focus:outline-gray-200 focus:outline-1 focus:border-green-400 focus:rounded-3xl"
+            className="w-full p-3 border-gray-400 rounded-sm border-b-3 border-1 text-green-400 focus:outline-gray-200 focus:outline-1 focus:border-green-400 focus:rounded-3xl"
           />
           <button className="absolute right-3 top-1/3 text-white transform -translate-y-1/3 p-1 border-green-400 rounded-4xl border-b-3">
             <Mail />

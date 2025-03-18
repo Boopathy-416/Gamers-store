@@ -3,8 +3,8 @@ import { GamepadIcon as GameController } from "lucide-react";
 
 export default function Footer() {
   return (
-    <footer className="w-full bg-black text-amber-100 rounded-2xl border-t">
-      <div className="container px-4 py-8 mx-auto">
+    <footer className="w-full bg-black text-amber-100  border-10  border-b-10 border-gray-500 rounded-4xl  border-t-8">
+      <div className="container px-6 py-8 mx-auto">
         <div className="grid grid-cols-2 gap-8 md:grid-cols-4 lg:grid-cols-5">
           {/* Logo Section */}
           <div className="col-span-2 md:col-span-1">
